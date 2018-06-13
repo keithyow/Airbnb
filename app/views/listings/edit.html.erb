@@ -1,0 +1,11 @@
+<%= form_for [current_user, @listing] do |f| %>
+	<%= f.label :name %><br>
+	<%= f.text_field :name %><br>
+	<%= f.label :description %><br>
+	<%= f.text_field :description %><br>
+	<%= f.label :address %><br>
+	<%= f.text_field :address %><br>
+	<%= f.label :price %><br>
+	<%= f.number_field :price %><br>
+	<%= f.submit %>
+<% end %>

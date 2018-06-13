@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
+    resources :listings, except: [:index, :show, :destroy]
   end
+
+  resources :listings, only: [:index, :show, :destroy]
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -16,6 +19,10 @@ Rails.application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+  put "/updaterole" => "users#become_host", as: "bhost"
 
+  get "/verifylistings" => "listings#verify_page"
+
+  put "/verified" => "listings#verified", as: "verified"
 
 end
