@@ -1,4 +1,10 @@
-class User < ApplicationRecord
+class User < ApplicationRecord 
+
+  # attr_accessor :image
+  
+
+  mount_uploader :avatar, AvatarUploader
+
   include Clearance::User
   enum role: [:customer, :host, :admin, :moderator]
   
@@ -20,6 +26,8 @@ class User < ApplicationRecord
    x = self.authentications.find_by(provider: 'google_oauth2')
    return x.token unless x.nil?
  end
+
+
 end
 
 

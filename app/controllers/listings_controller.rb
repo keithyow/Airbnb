@@ -76,7 +76,7 @@ class ListingsController < ApplicationController
 	end
 
 	def listing_params
-		params.require(:listing).permit(:name, :description, :address, :price)
+		params.require(:listing).permit(:name, :description, :address, :price, {images: []})
 	end
 
 	def require_moderator

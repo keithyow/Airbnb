@@ -67,6 +67,7 @@ class UsersController < Clearance::UsersController
     first_name = user_params.delete(:first_name)
     last_name = user_params.delete(:last_name)
     phone_number = user_params.delete(:phone_number)
+    avatar = user_params.delete(:avatar)
 
     Clearance.configuration.user_model.new(user_params).tap do |user|
       user.email = email
@@ -74,6 +75,7 @@ class UsersController < Clearance::UsersController
       user.first_name = first_name
       user.last_name = last_name
       user.phone_number = phone_number
+      user.avatar = avatar
 
 
     end
