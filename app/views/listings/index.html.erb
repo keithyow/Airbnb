@@ -1,9 +1,14 @@
 <%@listings.each do |x| %>
 	<p><a href = '/listings/<%=x.id%>'><%= x.name %></a></p>	
+	<%if x.images != nil%>
+		<%x.images.each do |images|%>
+			<img src = '<%=images.thumb.url%>'>
+		<%end%>
+	<%end%>
 <%end%>
 
 <%if current_user.role == "host" || current_user.role == "admin" %>
-	<a href="/users/<%=current_user.id%>/listings/new"><button>Create New Listing</button></a>
+	<p><a href="/users/<%=current_user.id%>/listings/new"><button>Create New Listing</button></a></p>
 <%end%>
 
 

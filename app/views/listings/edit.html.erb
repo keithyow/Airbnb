@@ -7,5 +7,7 @@
 	<%= f.text_field :address %><br>
 	<%= f.label :price %><br>
 	<%= f.number_field :price %><br>
+	<%= f.label :images %><br>
+	<%= f.file_field :images, multiple: true %><br>
 	<%= f.submit %>
 <% end %>

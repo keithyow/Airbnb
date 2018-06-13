@@ -2,6 +2,12 @@
 
 <h3>We give you the best roOms at the best pricez</h3>
 
+<p><%=current_user.first_name%></p>
+
+<p> <%=image_tag current_user.avatar.thumb.to_s%></p>	
+
+
+
 
 <%= button_to "Become A Host", bhost_path, method: :put%>
 
