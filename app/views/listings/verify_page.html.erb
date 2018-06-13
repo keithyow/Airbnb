@@ -1,0 +1,11 @@
+<%@listings.each do |x| %>
+	<h3><%= x.name %></h3>
+	<p><%=x.description%></p>
+	<%= button_to "Verify", {id: x.id, action: "verified"},  method: :put%>
+<%end%>
+
+
+
+
+
+<%= paginate @listings %>

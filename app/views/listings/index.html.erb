@@ -1,0 +1,11 @@
+<%@listings.each do |x| %>
+	<p><a href = '/listings/<%=x.id%>'><%= x.name %></a></p>	
+<%end%>
+
+<%if current_user.role == "host" || current_user.role == "admin" %>
+	<a href="/users/<%=current_user.id%>/listings/new"><button>Create New Listing</button></a>
+<%end%>
+
+
+
+<%= paginate @listings %>

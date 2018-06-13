@@ -28,6 +28,19 @@ class UsersController < Clearance::UsersController
     end
   end
 
+  
+
+
+
+
+
+  def become_host 
+    current_user.host!
+    redirect_back(fallback_location: root_path)
+  end 
+  
+
+
   private
 
   def avoid_sign_in

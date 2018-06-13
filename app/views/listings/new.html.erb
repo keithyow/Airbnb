@@ -1,0 +1,27 @@
+
+
+<!-- <form action="/users/<%#=@user.id%>/listings/new" method="post">
+	Listing Name: <input type="text" name="name"><br>
+	Description of Listing: <input type="text" name="description"><br>
+	Address: <input type="text" name="address"><br>
+	Price Per Night: <input type="integer" name="price"><br>
+	<input type="submit" value = "Create" name="">
+</form> -->
+
+<%= form_for [current_user, @listing] do |f| %>
+	<%= f.label :name %><br>
+	<%= f.text_field :name %><br>
+	<%= f.label :description %><br>
+	<%= f.text_field :description %><br>
+	<%= f.label :address %><br>
+	<%= f.text_field :address %><br>
+	<%= f.label :price %><br>
+	<%= f.number_field :price %><br>
+	<%= f.submit %>
+<% end %>
+
+
+
+
+
+
