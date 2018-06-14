@@ -4,3 +4,5 @@
 	<a href="/users/<%=current_user.id%>/listings/<%=@current.id%>/edit"><button>Edit This Listing</button></a>
 	<%= button_to "Delete", listing_path(@current), method: :delete, data: {confirm: "Are you sure? This action is irreversible"} %>
 <%end%>
+
+<%=link_to 'Make A Reservation', new_listing_reservation_path(@current)%>

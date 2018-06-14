@@ -3,4 +3,6 @@ class Listing < ApplicationRecord
 	
 	mount_uploaders :images, ImagesUploader
 
+	has_many :reservations, dependent: :destroy
+
 end

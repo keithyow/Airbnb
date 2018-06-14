@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :listings, except: [:index, :show, :destroy]
   end
 
-  resources :listings, only: [:index, :show, :destroy]
+  resources :listings, only: [:index, :show, :destroy] do 
+    resources :reservations
+  end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -24,5 +26,6 @@ Rails.application.routes.draw do
   get "/verifylistings" => "listings#verify_page"
 
   put "/verified" => "listings#verified", as: "verified"
+
 
 end
