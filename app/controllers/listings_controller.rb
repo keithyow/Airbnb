@@ -69,9 +69,13 @@ class ListingsController < ApplicationController
 	end
 
 	def require_host
-		if !current_user.host? && !current_user.admin?
-			flash[:notice] = "Sorry you do not have permission to perform this task"
-			redirect_to listings_path
+		if current_user != nil
+			if !current_user.host? && !current_user.admin?
+				flash[:notice] = "Sorry you do not have permission to perform this task"
+				redirect_to listings_path
+			end
+		else
+			redirect_to listings_path, notice: "You do not have the permissions to view that page"
 		end
 	end
 
@@ -80,9 +84,13 @@ class ListingsController < ApplicationController
 	end
 
 	def require_moderator
-		if !current_user.moderator? && !current_user.admin?
-			flash[:notice] = "Sorry you do not have permission to perform this task"
-			redirect_to listings_path, notice: "Not allowed"
+		if current_user != nil
+			if !current_user.moderator? && !current_user.admin?
+				flash[:notice] = "Sorry you do not have permission to perform this task"
+				redirect_to listings_path, notice: "Not allowed"
+			end
+		else
+			redirect_to listings_path, notice: "You do not have the permissions to view that page"
 		end
 	end
 

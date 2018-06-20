@@ -1,0 +1,9 @@
+<%= form_for [current_user, @listing, @reservation] do |f|%>
+	<%= f.label :guest%><br>
+	<%= f.number_field :guest, min: 1, value: 1%><br>
+	<%= f.label :check_in%><br>
+	<%= f.date_field :start, :value => Time.now.strftime('%Y-%m-%d')%><br>
+	<%= f.label :check_out%><br>
+	<%= f.date_field :end, :value => Time.now.strftime('%Y-%m-%d')%><br>
+	<%= f.submit %>
+<%end%>

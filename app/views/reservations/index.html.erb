@@ -1,0 +1,8 @@
+<h1>These are your reservations</h1>
+
+<% @reservations.each do |x| %>
+	<a href="/listings/<%=x.listing.id%>"><h3><%= x.listing.name %> <img src= "<%=x.listing.images.first.url%>" ></h3></a>
+	<p>Check In Date: <%= x.start%></p>
+	<p>Check Out Date: <%= x.end%></p>
+	<p>Number of Guests: <%= x.guest%></p>
+<%end%>

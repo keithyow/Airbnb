@@ -1,13 +1,17 @@
-<h1>Welcome to AirbOb</h1>
+<%if current_user != nil%>
+	<h1>Welcome to AirbOb, <%=current_user.first_name%></h1>
+<%else%>
+	<h1>Welcome to AirbOb</h1>
+<%end%>
 
 <h3>We give you the best roOms at the best pricez</h3>
 
-<p><%=current_user.first_name%></p>
-
-<p> <%=image_tag current_user.avatar.thumb.to_s%></p>	
+<a href="/listings">View All Listings</a>
 
 
-
-
-<%= button_to "Become A Host", bhost_path, method: :put%>
+<%#if current_user != nil%>
+	
+	<!-- =#image_tag current_user.avatar.thumb.to_s%></p>	 -->
+	<!-- #button_to "Become A Host", bhost_path, method: :put%> -->
+<%#end%>
 

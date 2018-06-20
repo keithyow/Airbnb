@@ -1,7 +1,5 @@
 class UsersController < Clearance::UsersController
 
-
-
   if respond_to?(:before_action)
     before_action :redirect_signed_in_users, only: [:create, :new]
     skip_before_action :require_login, only: [:create, :new], raise: false
@@ -17,6 +15,20 @@ class UsersController < Clearance::UsersController
     render template: "users/new"
   end
 
+  def edit
+    @user = User.find(params[:id])
+    # render template: "users/edit"
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(params.require(:user).permit(:first_name, :last_name, :email, :phone_number, :avatar))
+      redirect_to edit_user_path, notice: "Details Updated!"
+    else
+      render template: "user/<%=@user.id%>/edit"
+    end
+  end
+
   def create
     @user = user_from_params
 
@@ -29,11 +41,6 @@ class UsersController < Clearance::UsersController
   end
 
   
-
-
-
-
-
   def become_host 
     current_user.host!
     redirect_back(fallback_location: root_path)

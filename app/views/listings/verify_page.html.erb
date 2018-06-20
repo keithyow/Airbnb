@@ -2,6 +2,7 @@
 	<h3><%= x.name %></h3>
 	<p><%=x.description%></p>
 	<%= button_to "Verify", {id: x.id, action: "verified"},  method: :put%>
+	<%= button_to "Delete", listing_path(x.id), method: :delete, data: {confirm: "Are you sure? This action is irreversible"} %>
 <%end%>
 
 

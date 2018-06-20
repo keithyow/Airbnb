@@ -1,6 +1,22 @@
 <h1><%=@current.name%></h1>
 
-<%if @current.user_id == current_user.id || current_user.role == 'admin'%>
-	<a href="/users/<%=current_user.id%>/listings/<%=@current.id%>/edit"><button>Edit This Listing</button></a>
-	<%= button_to "Delete", listing_path(@current), method: :delete, data: {confirm: "Are you sure? This action is irreversible"} %>
+<h2><%= @current.description %></h2>
+
+
+<h3>Price: $<%=@current.price%> per night</h3>
+
+<%= button_to "Make Reservaton", new_user_listing_reservation_path(@current.id, current_user.id), method: :get%>
+
+<%if @current.images != nil%>
+	<%@current.images.each do |images|%>
+		<img src = '<%=images.url%>'>
+	<%end%>
+	<br>
+<%end%>
+
+<%if current_user != nil%>
+	<%if @current.user_id == current_user.id || current_user.role == 'admin'%>
+		<a href="/users/<%=current_user.id%>/listings/<%=@current.id%>/edit"><button>Edit This Listing</button></a>
+		<%= button_to "Delete", listing_path(@current), method: :delete, data: {confirm: "Are you sure? This action is irreversible"} %>
+	<%end%>
 <%end%>
